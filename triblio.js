@@ -1,21 +1,21 @@
 window.analytics.ready(function () {
-    if (window.Triblio && !analytics.group().traits().website) {
-        var account = Triblio.getAccountIdentification();
-        if (!account.isIsp && account.domain) {
-            var company = { website: account.domain, source: 'triblio' }
+  if (!window.Triblio || analytics.group().traits().website) {
+    return;
+  }
 
-            if (account.name)
-                company.name = account.name;
-            if (account.country)
-                company.country = account.country;
-            if (account.industry)
-                company.industry = account.industry;
-            if (account.employees)
-                company.number_of_employees = account.employees;
-            if (account.revenue)
-                company.annual_revenue = account.revenue;
+  const account = Triblio.getAccountIdentification();
 
-            analytics.group(null, company);
-        }
-    }
+  if (account.isIsp || !account.domain) {
+    return;
+  }
+
+  analytics.group(null, {
+    website: account.domain,
+    source: "triblio",
+    name: account.name || undefined,
+    country: account.country || undefined,
+    industry: account.industry || undefined,
+    number_of_employees: account.employees || undefined,
+    annual_revenue: account.revenue || undefined,
+  });
 });
