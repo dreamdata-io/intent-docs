@@ -1,16 +1,19 @@
-window.onB2BPersonalizationDataReady = (function (personalizationData) {
-    if (personalizationData && window.analytics && !analytics.group().traits().website && personalizationData["domain"]) {
-        var company = { website: personalizationData["domain"], source: 'nextroll' }
+window.onB2BPersonalizationDataReady = function (data) {
+  if (
+    !data ||
+    !window.analytics ||
+    analytics.group().traits().website ||
+    !data["domain"]
+  ) {
+    return;
+  }
 
-        if (personalizationData["company_name"])
-            company.name = personalizationData["company_name"];
-        if (personalizationData["company_industry"])
-            company.industry = personalizationData["company_industry"];
-        if (personalizationData["company_size"])
-            company.number_of_employees = personalizationData["company_size"];
-        if (personalizationData["company_revenue"])
-            company.annual_revenue = personalizationData["company_revenue"];
-
-        analytics.group(null, company);
-    }
-});
+  analytics.group(null, {
+    website: data.domain,
+    source: "nextroll",
+    name: data.company_name || undefined,
+    industry: data.company_industry || undefined,
+    number_of_employees: data.company_size || undefined,
+    annual_revenue: data.company_revenue || undefined,
+  });
+};
