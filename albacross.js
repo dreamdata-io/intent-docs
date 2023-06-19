@@ -1,5 +1,5 @@
 window.analytics.ready(function () {
-  const reveal = window.AlbacrossReveal && window.AlbacrossReveal.company;
+  var reveal = window.AlbacrossReveal && window.AlbacrossReveal.company;
 
   if (!reveal || !reveal.url || analytics.group().traits().website) {
     return;

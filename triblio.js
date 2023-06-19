@@ -3,7 +3,7 @@ window.analytics.ready(function () {
     return;
   }
 
-  const account = Triblio.getAccountIdentification();
+  var account = Triblio.getAccountIdentification();
 
   if (account.isIsp || !account.domain) {
     return;
