@@ -23,14 +23,14 @@ function clearbitCallback(response) {
 }
 
 window.analytics.ready(function () {
-  const clearbitKey = "{pk_replace_me}";
-  const response = sessionStorage.getItem("cb_reveal");
+  var clearbitKey = "{pk_replace_me}";
+  var response = sessionStorage.getItem("cb_reveal");
 
   if (response || analytics.group().traits().website) {
     return;
   }
 
-  const script = document.createElement("script");
+  var script = document.createElement("script");
   script.src = `https://reveal.clearbit.com/v1/companies/reveal?authorization=${clearbitKey}&callback=clearbitCallback`;
   document.body.appendChild(script);
 });

@@ -7,7 +7,7 @@ window.analytics.ready(function () {
     }
   }
 
-  const details = getStorage("_6senseCompanyDetails");
+  var details = getStorage("_6senseCompanyDetails");
 
   if (
     !details ||
@@ -18,7 +18,7 @@ window.analytics.ready(function () {
     return;
   }
 
-  const reveal = details.company;
+  var reveal = details.company;
 
   analytics.group(null, {
     website: reveal.domain,
