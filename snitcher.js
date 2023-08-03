@@ -7,7 +7,7 @@ function dreamdataCallback(identification) {
     var reveal = identification.company;
     analytics.group(null, {
         website: reveal.domain,
-        source: "leadfeeder",
+        source: "snitcher",
         name: reveal.name || undefined,
         industry: reveal.industry || undefined,
         number_of_employees: reveal.employee_range || undefined,
