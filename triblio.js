@@ -4,7 +4,6 @@ window.analytics.ready(function () {
   }
 
   var account = Triblio.getAccountIdentification();
-
   if (account.isIsp || !account.domain) {
     return;
   }
