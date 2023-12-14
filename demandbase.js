@@ -1,6 +1,6 @@
 // docs: https://support.demandbase.com/hc/en-us/articles/360053223451-Reference-Demandbase-IP-API-for-Demandbase-One
 window.analytics.ready(function () {
-    if (!Demandbase && !Demandbase.Segments && !Demandbase.Segments.CompanyProfile && analytics.group().traits().website) {
+    if (!Demandbase && !Demandbase.Segments && !Demandbase.Segments.IsCompany && !Demandbase.Segments.CompanyProfile && analytics.group().traits().website) {
         return;
     }
 
